@@ -1,0 +1,77 @@
+O que são Progressive Web Apps (PWAs)?
+
+Um Progressive Web App (PWA) é um tipo de aplicativo web projetado para oferecer uma experiência de usuário mais envolvente e confiável, semelhante aos aplicativos móveis nativos, mas construído usando tecnologias web padrão.
+
+As principais características das PWAs são:
+
+1 - Progressivo:
+
+O termo "progressivo" significa que uma PWA pode funcionar para todos os usuários, independentemente do dispositivo ou das capacidades do navegador. Ela aprimora progressivamente a experiência do usuário com base nas capacidades do dispositivo e do navegador a partir do qual está sendo acessada. Isso a torna acessível a um público amplo.
+
+2 - Aplicação Web:
+
+Uma PWA é uma aplicação web, o que significa que é construída usando tecnologias web, como HTML, CSS e JavaScript, da mesma forma que sites tradicionais. Ela é executada em um navegador da web e pode ser acessada por meio de uma URL.
+
+3 - Confiável:
+
+As PWAs são projetadas para funcionar de forma confiável, mesmo em condições de rede instáveis. Elas podem armazenar em cache conteúdo e recursos, o que permite que funcionem offline ou com conectividade limitada. Isso garante que os usuários possam acessar o conteúdo do aplicativo mesmo quando a conexão com a Internet é fraca
+
+4 - Rápidas e Responsivas:
+
+As PWAs são otimizadas para velocidade e responsividade. Elas são projetadas para carregar rapidamente, oferecendo uma experiência de usuário suave e rápida. Os usuários não precisam enfrentar longos tempos de carregamento ou atualizações de página.
+
+5 - Experiência semelhante à de um Aplicativo:
+
+As PWAs oferecem uma experiência semelhante à de um aplicativo, com recursos como animações suaves, gestos e design responsivo. Elas podem ser adicionadas à tela inicial do dispositivo do usuário, assim como aplicativos nativos, e serem iniciadas a partir dali.
+
+6 - Envolventes:
+
+As PWAs oferecem recursos para envolver os usuários, como notificações push, que permitem enviar atualizações e alertas, mesmo quando o aplicativo não está aberto. Isso ajuda a reenvolver os usuários e mantê-los informados.
+
+7 - Instaláveis:
+
+Os usuários têm a opção de instalar as PWAs em seus dispositivos. Esse processo de instalação é frequentemente chamado de "adicionar à tela inicial". Uma vez instaladas, as PWAs aparecem ao lado dos aplicativos nativos e podem ser iniciadas a partir da tela inicial.
+
+8 - Segurança:
+
+As PWAs são servidas via HTTPS, o que garante a segurança e a privacidade dos dados. Isso é especialmente importante para aplicativos que lidam com informações sensíveis.
+
+9 - Descobríveis:
+
+As PWAs são descobríveis pelos motores de busca, tornando-as fáceis de encontrar. Isso permite que os usuários descubram e acessem o aplicativo por meio de pesquisas na web.
+
+10 - Multiplataforma:
+
+As PWAs são compatíveis com várias plataformas e navegadores. Elas podem ser executadas em diferentes sistemas operacionais e navegadores, reduzindo a necessidade de desenvolver aplicativos separados para plataformas diferentes.
+
+11 - Sem Processo de Aprovação da Loja de Aplicativos:
+
+Ao contrário dos aplicativos nativos, as PWAs não precisam passar por um processo de aprovação na loja de aplicativos, que pode ser demorado e restritivo. Você pode publicar e atualizar PWAs sem a necessidade de aprovação das lojas de aplicativos.
+
+
+
+O que são Service Workers?
+
+Os Service Workers são scripts em segundo plano que permitem controlar ações assíncronas e interações entre o navegador e a rede. Eles atuam como intermediários entre o aplicativo web e o servidor, permitindo o armazenamento em cache, notificações push e outras funcionalidades offline.
+
+IMPORTANTE: service workers funcionam apenas sob HTTPS!
+
+Estratégias ou políticas de caching em um service worker:
+
+1 - Cache First
+2 - Network First
+3 - Cache Only
+4 - Network Only
+5 - Cache update OU Stale-While-Revalidate (o melhor na maioria dos casos)
+
+Implementar service worker é complexo. Solução: utilizar uma solução pronta -> Framework Workbox
+
+
+yarn create react-app exemplo-pwa --template cra-template-pwa-typescript
+
+
+chrome://apps
+
+chrome.google.com/webstore
+
+lighthouse
