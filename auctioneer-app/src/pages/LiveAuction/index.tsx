@@ -18,10 +18,20 @@ const LiveAuction = () => {
 
   const [bids, setBids] = useState<Bid[]>([])
 
+  /**
+   * Este objeto contém a referência de uma div
+   * que fica ao final da listagem dos lances do leilão.
+   * Ela é utilizada nesta página para fazer a rolagem
+   * automática da listagem para o lado de baixo.
+   */
   const bottomEl = useRef<HTMLDivElement>(null)
 
   const { socket } = useContext(SocketContext)
 
+  /**
+   * Lida com o recebimento de novos lances, 
+   * atualizando a lista na página
+   */
   const handleMessageReceived = useCallback((messageObj: Bid) => {
     console.log('Message received')
     console.log(messageObj)
@@ -30,8 +40,14 @@ const LiveAuction = () => {
     setBids(updatedBids)
   }, [bids])
 
+  /**
+   * Recebe um novo lance
+   */
   socket.on(`${process.env.REACT_APP_MESSAGE_RECEIVED_EVENT}`, handleMessageReceived)
 
+  /**
+   * Realiza a rolagem para baixo da lista de lances
+   */
   useEffect(() => {
     bottomEl?.current?.scrollIntoView({ behavior: 'smooth' })
   }, [bids])
