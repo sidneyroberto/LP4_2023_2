@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom'
 import Home from './pages/Home'
-import Auction from './pages/Auction'
+import LiveAuction from './pages/LiveAuction'
 
 const routes: RouteObject[] = [
   {
@@ -9,7 +9,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '/auction',
-    element: <Auction />
+    element: <LiveAuction />
   }
 ]
 

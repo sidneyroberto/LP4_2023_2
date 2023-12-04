@@ -1,17 +1,26 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 import styles from './styles.module.css'
 import { storage } from '../../config/firebase'
+import { Auction } from '../../models/Auction'
+import { useNavigate } from 'react-router-dom'
+import { BeatLoader } from 'react-spinners'
+import { SocketContext } from '../../context/SocketContext'
 
 const Home = () => {
   const [image, setImage] = useState<File | null>(null)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [initialBid, setInitialBid] = useState(1)
+  const [submitting, isSubmitting] = useState(false)
+
+  const navigate = useNavigate()
+  const { socket } = useContext(SocketContext)
 
   const startAuction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    isSubmitting(true)
 
     // Envia a foto do produto para o Storage
     const uuid = crypto.randomUUID()
@@ -20,10 +29,15 @@ const Home = () => {
     try {
       await uploadBytes(storageRef, image as File)
       const imageURL = await getDownloadURL(storageRef)
-      const auction = { imageURL, title, description, initialBid }
+      const auction: Auction = { id: uuid, imageURL, title, description, initialBid }
       console.log(auction)
+
+      socket.emit(`${process.env.REACT_APP_AUCTION_STARTED_EVENT}`, auction)
+
+      navigate('/auction', { state: { auction } })
     } catch (err) {
       console.log(err)
+      isSubmitting(false)
     }
   }
 
@@ -69,6 +83,8 @@ const Home = () => {
           <input type="submit" value="Iniciar" />
         </form>
       </div>
+
+      <BeatLoader color='#555' loading={submitting} />
     </div>
   )
 }
